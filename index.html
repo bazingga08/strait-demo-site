@@ -18,7 +18,8 @@
   header{text-align:center;padding:var(--st-space-8) var(--st-space-1) var(--st-space-2)}
   header .st-h1{font-size:28px;line-height:34px}
   .tag{margin-top:var(--st-space-1)}
-  .powered{display:inline-flex;align-items:center;gap:var(--st-space-2);margin-top:var(--st-space-3)}
+  /* A neutral tag, not a status or an action (DS v4.1 §9.8): orange stays for "act here". Mark below 24px = small mark (§3). */
+  .powered{display:inline-flex;align-items:center;gap:var(--st-space-2);margin-top:var(--st-space-3);border-radius:var(--st-radius-xs)}
   .powered img{width:16px;height:16px}
   .step{display:flex;align-items:baseline;flex-wrap:wrap;gap:var(--st-space-2);margin:var(--st-space-6) 0 var(--st-space-3)}
   .step .st-overline{color:var(--st-brand-text)}
@@ -42,9 +43,9 @@
 <body class="st-root">
 <div class="wrap">
   <header>
-    <h1 class="st-h1">🛍️ Acme App</h1>
+    <h1 class="st-h1">Acme App</h1>
     <p class="tag st-muted">a pretend customer product, powered by Strait</p>
-    <span class="powered st-badge st-badge--brand st-badge--plain"><img src="assets/strait-mark.svg" alt="">Strait demo client</span>
+    <span class="powered st-badge st-badge--plain"><img src="assets/strait-mark-small.svg" alt="">Strait demo client</span>
   </header>
 
   <h2 class="step"><span class="st-overline">① Connect to your Strait workspace</span></h2>
