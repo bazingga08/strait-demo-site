@@ -1,6 +1,6 @@
 # Strait demo client
 
-A pretend customer web app ("Hilltop Shoes", a made-up shop used in examples) that shows a Strait deep link and the web SDK flow end to end. It is a static site: `index.html` (demo), `open.html`, `fingerprint.html` and `privacy.html` (privacy policy for the test app).
+A pretend customer web app ("Hilltop Shoes", a made-up shop used in examples) for trying Strait: connect a workspace with a publishable key, resolve a deferred link the way the SDK does on first launch, and send conversion events. It is a static site: `index.html` (the demo), `open.html` (tap a link in the browser), `fingerprint.html` (browser-side fingerprint check) and `privacy.html` (privacy policy for the Strait Link test app).
 
 ## Support
 
