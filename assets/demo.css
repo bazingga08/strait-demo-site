@@ -1,0 +1,101 @@
+/* Demo client chrome on the Strait design system v5 (strait-tokens.css, strait-ui.css, strait-parts.css).
+   Product tier: no motion beyond hover and press; every duration is 0 under reduced motion. */
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; background: var(--st-bg); }
+.sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: var(--st-space-4); top: -100px; z-index: 10; padding: var(--st-space-2) var(--st-space-3); border-radius: var(--st-radius-md); background: var(--st-surface-raised); color: var(--st-text); box-shadow: var(--st-shadow-md); }
+.skip:focus { top: var(--st-space-3); }
+a { color: var(--st-link); text-underline-offset: 3px; }
+a:hover { color: var(--st-link-hover); }
+code { font: var(--st-text-code); font-variant-ligatures: none; font-feature-settings: "calt" 0, "liga" 0; }
+
+/* Header: sticky, never hides. */
+.bar { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--st-bg) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--st-border); box-shadow: var(--st-shadow-edge); }
+.bar-in { display: flex; align-items: center; gap: var(--st-space-3); max-width: 1120px; height: 56px; margin: 0 auto; padding: 0 var(--st-space-4); }
+.brand { display: inline-flex; align-items: center; }
+.brand img { display: block; height: 28px; width: auto; }
+/* The lockup follows the page theme (system or the switch), not only the system setting. */
+.lk-d { display: none !important; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .lk-l { display: none !important; } :root:not([data-theme="light"]) .lk-d { display: block !important; } }
+:root[data-theme="dark"] .lk-l { display: none !important; }
+:root[data-theme="dark"] .lk-d { display: block !important; }
+.bar .tag { margin-right: auto; }
+.theme { display: inline-flex; padding: 2px; border: 1px solid var(--st-border); border-radius: var(--st-radius-md); background: var(--st-bg-subtle); }
+.theme button { min-width: 44px; height: 32px; padding: 0 var(--st-space-2); border: 0; border-radius: var(--st-radius-sm); background: none; color: var(--st-text-muted); font: 500 13px/1 var(--st-font-body); cursor: pointer; transition: background var(--st-duration-fast) var(--st-ease-standard), color var(--st-duration-fast) var(--st-ease-standard); }
+.theme button:hover { color: var(--st-text); }
+.theme button[aria-pressed="true"] { background: var(--st-surface-raised); color: var(--st-text); box-shadow: var(--st-shadow-sm), var(--st-shadow-edge); }
+.theme button:focus-visible { outline: 2px solid var(--st-focus-ring); outline-offset: 2px; }
+@media (pointer: coarse) { .theme button { height: 40px; } }
+@media (max-width: 440px) { .bar .tag { display: none; } .bar .theme { margin-left: auto; } }
+
+@media (min-width: 768px) { .bar-in { height: 64px; padding: 0 var(--st-space-6); } }
+
+/* Page */
+.wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: var(--st-space-10) var(--st-space-4) var(--st-space-16); flex: 1; }
+@media (min-width: 768px) { .wrap { padding: var(--st-space-16) var(--st-space-6) var(--st-space-20); } }
+.eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--st-space-2); margin: 0 0 var(--st-space-4); font: var(--st-text-caption); color: var(--st-text-subtle); }
+.title { margin: 0; font: var(--st-text-display-lg); letter-spacing: var(--st-tracking-display-lg); color: var(--st-text); text-wrap: balance; }
+.lead { max-width: 46ch; margin: var(--st-space-4) 0 0; font: var(--st-text-lead); color: var(--st-text-muted); }
+.hero { margin-bottom: var(--st-space-10); }
+
+/* Steps */
+.rail { margin: 0 0 var(--st-space-12); }
+.step { margin: 0 0 var(--st-space-10); scroll-margin-top: 80px; }
+.step-h { display: flex; align-items: center; gap: var(--st-space-3); margin: 0 0 var(--st-space-2); font: var(--st-text-section-title); color: var(--st-text); }
+.step-n { flex: none; display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--st-border-strong); font: 600 13px/1 var(--st-font-mono); color: var(--st-text-muted); }
+.step.is-on .step-n { border-color: var(--st-text-subtle); color: var(--st-text); }
+.step.is-done .step-n { background: var(--st-bg-muted); }
+/* The rail above carries progress in orange; the step numbers stay neutral (one orange object per section). */
+.step-p { margin: 0 0 var(--st-space-4); max-width: 60ch; font: var(--st-text-body-md); color: var(--st-text-muted); }
+.card { display: flex; flex-direction: column; gap: var(--st-space-4); padding: var(--st-space-6); box-shadow: var(--st-shadow-edge); }
+.hint { margin: 0; font: var(--st-text-body-sm); color: var(--st-text-muted); }
+.hint b { color: var(--st-text); font-weight: 600; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--st-space-3); }
+.row .st-btn { white-space: normal; line-height: 1.3; height: auto; min-height: 44px; padding-block: var(--st-space-2); text-align: center; }
+@media (max-width: 480px) { .row { grid-template-columns: 1fr; } }
+.st-btn--primary:disabled { opacity: .6; }
+
+/* Receipts: the record of each request, on warm paper in both themes. */
+.h-rcpt { border-radius: var(--st-radius-xs); }
+.h-rcpt-h, .h-rcpt-l, .h-rcpt-b { margin: 0; }
+.h-rcpt-l { list-style: none; padding: 0 0 12px; margin-top: 10px; }
+.h-rcpt-l li { flex-wrap: wrap; min-width: 0; }
+.h-rv { white-space: normal; overflow-wrap: anywhere; min-width: 0; text-align: right; justify-content: flex-end; flex-wrap: wrap; }
+.h-rcpt-b { margin-top: 10px; padding-bottom: 0; border-bottom: 0; font: var(--st-text-body-sm); color: var(--st-text-muted); }
+.h-rcpt-l li.is-block { flex-direction: column; align-items: flex-start; gap: 2px; }
+.h-rcpt-l li.is-block > i { display: none; }
+.h-rcpt-l li.is-block .h-rv { text-align: left; justify-content: flex-start; }
+/* Paper keeps its own ink in both themes (DS v5 §8.5), so a health chip printed on it uses the
+   light-theme status pair from strait-tokens.css (status-ok / status-broken, :root values). */
+.h-rcpt { --st-status-ok: #33701B; --st-status-ok-bg: #EEF4E4; --st-status-broken: #B3261E; --st-status-broken-bg: #FBEAE6; }
+.raw { margin-top: var(--st-space-1); }
+.raw summary { cursor: pointer; font: var(--st-text-caption); color: var(--st-text-muted); padding: var(--st-space-2) 0; min-height: 44px; display: flex; align-items: center; }
+.raw summary:focus-visible { outline: 2px solid var(--st-focus-ring); outline-offset: 2px; border-radius: var(--st-radius-xs); }
+.raw pre { margin: 0; padding: var(--st-space-3); border: 1px solid var(--st-border); border-radius: var(--st-radius-md); background: var(--st-bg-muted); color: var(--st-text); font: var(--st-text-code-sm); white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* Wide screens: the steps on the left, the record (activity) beside them, sticky. */
+.cols { display: block; }
+.record-h { display: flex; align-items: center; gap: var(--st-space-2); }
+.record-h .h-mm { width: 14px; height: 16px; }
+@media (min-width: 1024px) {
+  .wrap { max-width: 1120px; }
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: var(--st-space-12); align-items: start; }
+  .record { position: sticky; top: 88px; }
+  .hero, .rail { max-width: 680px; }
+}
+
+/* Activity */
+.log { margin: 0; padding: 0; list-style: none; font: var(--st-text-code-sm); color: var(--st-text-muted); }
+.log li { display: flex; flex-wrap: wrap; align-items: center; gap: var(--st-space-2); padding: var(--st-space-3) 0; border-bottom: 1px solid var(--st-border); }
+.log li:last-child { border-bottom: 0; }
+.log time { color: var(--st-text-subtle); font-variant-numeric: tabular-nums; }
+.log .msg { color: var(--st-text); overflow-wrap: anywhere; min-width: 0; flex: 1 1 14rem; }
+.empty { color: var(--st-text-subtle); font: var(--st-text-body-sm); }
+
+/* Footer, after the seam */
+.foot { max-width: 1120px; width: 100%; margin: 0 auto; padding: var(--st-space-8) var(--st-space-4) calc(var(--st-space-10) + env(safe-area-inset-bottom)); display: flex; flex-wrap: wrap; gap: var(--st-space-3) var(--st-space-6); justify-content: space-between; font: var(--st-text-body-sm); color: var(--st-text-muted); }
+.foot b { color: var(--st-text); font-weight: 600; }
+.foot p { margin: 0; }
+@media (min-width: 768px) { .foot { padding-inline: var(--st-space-6); } }
+
+@media (forced-colors: active) { .st-btn, .theme button, .chip, .tag { border: 1px solid ButtonText; } }

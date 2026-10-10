@@ -1,0 +1,7 @@
+/* Self-hosted brand faces (no request to Google), DS v5 §4. Bricolage Grotesque 700 for display only,
+   Inter for body, JetBrains Mono for labels, code and receipts. The display stack falls back to a
+   local Arial Bold ("Strait Display Fallback") so the H1 holds its place while the face loads. */
+@font-face { font-family: "Bricolage Grotesque"; src: url("fonts/bricolage-grotesque.woff2") format("woff2"); font-weight: 600 800; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("fonts/inter.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Strait Display Fallback"; src: local("Arial Bold"), local("Arial-BoldMT"); font-weight: 700; size-adjust: 96%; }

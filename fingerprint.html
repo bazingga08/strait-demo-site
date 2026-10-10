@@ -5,13 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Fingerprint check · browser side</title>
+<meta name="color-scheme" content="dark light">
+<script>try{var t=localStorage.getItem('strait.theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="strait-tokens.css">
-<link rel="stylesheet" href="strait-warm.css">
 <link rel="stylesheet" href="strait-ui.css">
+<link rel="stylesheet" href="strait-parts.css">
+<link rel="stylesheet" href="assets/demo.css">
 <style>
   body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
          background: var(--st-bg-subtle); padding: var(--st-space-4); box-sizing: border-box; }
@@ -27,10 +29,7 @@
 </head>
 <body class="st-root">
 <main class="st-card">
-  <picture class="logo">
-    <source srcset="assets/strait-lockup-dark.svg" media="(prefers-color-scheme: dark)">
-    <img src="assets/strait-lockup.svg" alt="Strait" width="97" height="32">
-  </picture>
+  <span class="logo"><img class="lk-l" src="assets/strait-lockup.svg" alt="Strait" width="97" height="32"><img class="lk-d" src="assets/strait-lockup-dark.svg" alt="Strait" width="97" height="32"></span>
   <h1 class="st-h1">Fingerprint check</h1>
   <p id="msg">Reading this browser…</p>
   <code id="code"></code>

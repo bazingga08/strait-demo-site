@@ -3,110 +3,169 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hilltop Shoes — a Strait demo client</title>
+<meta name="color-scheme" content="dark light">
+<title>Hilltop Shoes · a Strait demo client</title>
+<script>try{var t=localStorage.getItem('strait.theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="strait-tokens.css">
-<link rel="stylesheet" href="strait-warm.css">
 <link rel="stylesheet" href="strait-ui.css">
-<style>
-  *{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%}
-  body{background:var(--st-bg-subtle);min-height:100vh;
-    padding:0 var(--st-space-4) calc(var(--st-space-10) + env(safe-area-inset-bottom))}
-  .wrap{max-width:560px;margin:0 auto}
-  header{text-align:center;padding:var(--st-space-8) var(--st-space-1) var(--st-space-2)}
-  header .st-h1{font-size:28px;line-height:34px}
-  .tag{margin-top:var(--st-space-1)}
-  /* A neutral tag, not a status or an action (DS v4.1 §9.8): orange stays for "act here". Mark below 24px = small mark (§3). */
-  .powered{display:inline-flex;align-items:center;gap:var(--st-space-2);margin-top:var(--st-space-3);border-radius:var(--st-radius-xs)}
-  .powered img{width:16px;height:16px}
-  .step{display:flex;align-items:baseline;flex-wrap:wrap;gap:var(--st-space-2);margin:var(--st-space-6) 0 var(--st-space-3)}
-  .step .st-overline{color:var(--st-brand-text)}
-  .step .st-muted{font:var(--st-text-body-sm)}
-  .card{margin-bottom:var(--st-space-3);display:flex;flex-direction:column;gap:var(--st-space-3)}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:var(--st-space-3)}
-  .row .st-btn{white-space:normal;line-height:1.25;height:auto;min-height:44px;padding-block:var(--st-space-2)}
-  @media (max-width:400px){.row{grid-template-columns:1fr}}
-  .res{font:var(--st-text-code);font-size:12px;background:var(--st-bg-muted);border:1px solid var(--st-border);
-    border-radius:var(--st-radius-md);padding:var(--st-space-3);white-space:pre-wrap;word-break:break-word;
-    color:var(--st-text);min-height:44px}
-  .ok{color:var(--st-success)}.err{color:var(--st-danger)}.muted{color:var(--st-text-muted)}
-  .log{font:var(--st-text-code);font-size:12px;color:var(--st-text-muted)}
-  .log .line{padding:6px 0;border-bottom:1px solid var(--st-border)}
-  .log .line:last-child{border-bottom:0}
-  .hint{font:var(--st-text-body-sm);color:var(--st-text-muted)}
-  .hint b{color:var(--st-text);font-weight:600}
-  footer{text-align:center;margin-top:var(--st-space-8);font:var(--st-text-caption);color:var(--st-text-subtle)}
-</style>
+<link rel="stylesheet" href="strait-parts.css">
+<link rel="stylesheet" href="assets/demo.css">
 </head>
 <body class="st-root">
-<div class="wrap">
-  <header>
-    <h1 class="st-h1">Hilltop Shoes</h1>
-    <p class="tag st-muted">a pretend customer product, powered by Strait</p>
-    <span class="powered st-badge st-badge--plain"><img src="assets/strait-mark-small.svg" alt="">Strait demo client</span>
-  </header>
-
-  <h2 class="step"><span class="st-overline">① Connect to your Strait workspace</span></h2>
-  <div class="card st-card">
-    <div class="st-field">
-      <label class="st-label" for="endpoint">Strait endpoint</label>
-      <input class="st-input st-input--mono" id="endpoint" value="https://strait.link">
+<a class="skip" href="#main">Skip to the demo</a>
+<header class="bar">
+  <div class="bar-in">
+    <a class="brand" href="./" aria-label="Strait demo client, home">
+      <img class="lk-l" src="assets/strait-lockup.svg" alt="Strait" width="85" height="28">
+      <img class="lk-d" src="assets/strait-lockup-dark.svg" alt="Strait" width="85" height="28">
+    </a>
+    <span class="tag">Demo client</span>
+    <div class="theme" role="group" aria-label="Theme">
+      <button type="button" class="t-sys" data-theme-set="system" aria-pressed="true">System</button>
+      <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
+      <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
     </div>
-    <div class="st-field">
-      <label class="st-label" for="publishableKey">Publishable key <span class="muted">(Dashboard → Get started → Publishable key)</span></label>
-      <input class="st-input st-input--mono" id="publishableKey" placeholder="st_pub_live_…">
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="hero" aria-labelledby="title">
+    <p class="eyebrow"><span class="tag">Sample</span><span>Hilltop Shoes is a made-up shop used in examples</span></p>
+    <h1 class="title" id="title">Hilltop Shoes</h1>
+    <p class="lead">Try Strait the way an app does: connect your workspace, ask for the deferred link on first launch, then send the events your funnel counts.</p>
+  </section>
+
+  <ol class="rail" aria-label="Steps" id="rail">
+    <li class="rail-s is-on" aria-current="step"><span class="rail-in"><b class="rail-n">1</b><span class="rail-t">Connect</span><span class="rail-d">Your endpoint and publishable key</span></span></li>
+    <li class="rail-s"><span class="rail-in"><b class="rail-n">2</b><span class="rail-t">Resolve</span><span class="rail-d">The deferred link, as on first launch</span></span></li>
+    <li class="rail-s"><span class="rail-in"><b class="rail-n">3</b><span class="rail-t">Count</span><span class="rail-d">Signup and purchase events</span></span></li>
+  </ol>
+
+  <div class="cols">
+  <div class="steps">
+  <section class="step is-on" id="step1" aria-labelledby="h-step1">
+    <h2 class="step-h" id="h-step1"><span class="step-n" aria-hidden="true">1</span>Connect your Strait workspace</h2>
+    <p class="step-p">The publishable key ties every action below to your workspace's analytics. It is safe in a website or an app; never paste the secret key here.</p>
+    <div class="card st-card">
+      <div class="st-field">
+        <label class="st-label" for="endpoint">Strait endpoint</label>
+        <input class="st-input st-input--mono" id="endpoint" value="https://strait.link" autocomplete="off" spellcheck="false" inputmode="url">
+      </div>
+      <div class="st-field">
+        <label class="st-label" for="publishableKey">Publishable key</label>
+        <input class="st-input st-input--mono" id="publishableKey" placeholder="st_pub_live_…" autocomplete="off" spellcheck="false" aria-describedby="pk-help">
+        <p class="st-help" id="pk-help">Dashboard → Get started → Publishable key. Saved in this browser only.</p>
+      </div>
     </div>
-    <p class="hint">These are saved in this browser. The publishable key ties every action below to <b>your</b> workspace's analytics. It's safe to use in a website.</p>
-  </div>
+  </section>
 
-  <h2 class="step"><span class="st-overline">② Deferred link resolve</span><span class="st-muted">(what the SDK does on first launch)</span></h2>
-  <div class="card st-card">
-    <p class="hint">Simulates your app asking Strait “did this device just click one of our links?” It sends coarse device fields; Strait adds the IP it sees and looks for a match.</p>
-    <button class="st-btn st-btn--primary st-btn--lg st-btn--block" id="btnMatch">Check for a deferred link</button>
-    <div class="res" id="matchRes">—</div>
-  </div>
-
-  <h2 class="step"><span class="st-overline">③ Conversion events</span><span class="st-muted">(your funnel + revenue)</span></h2>
-  <div class="card st-card">
-    <p class="hint">Fire the events your real app would send. They show up in Dashboard → Analytics (funnel + revenue) and trigger webhooks.</p>
-    <div class="row">
-      <button class="st-btn st-btn--secondary st-btn--lg" id="btnSignup">Track “signup”</button>
-      <button class="st-btn st-btn--secondary st-btn--lg" id="btnPurchase">Track “purchase”: Trail Runner, size 9 · $49.99</button>
+  <section class="step" id="step2" aria-labelledby="h-step2">
+    <h2 class="step-h" id="h-step2"><span class="step-n" aria-hidden="true">2</span>Resolve a deferred link</h2>
+    <p class="step-p">What the SDK does on first launch: ask Strait whether this device just tapped one of your links. It sends coarse device fields; Strait adds the IP it sees and looks for a match.</p>
+    <div class="card st-card">
+      <button class="st-btn st-btn--primary st-btn--lg st-btn--block" id="btnMatch" type="button">Check for a deferred link</button>
+      <div id="matchRes" aria-live="polite"><p class="empty">Nothing sent yet.</p></div>
     </div>
-    <div class="res" id="eventRes">—</div>
+  </section>
+
+  <section class="step" id="step3" aria-labelledby="h-step3">
+    <h2 class="step-h" id="h-step3"><span class="step-n" aria-hidden="true">3</span>Send conversion events</h2>
+    <p class="step-p">The events your real app would send. They show in Dashboard → Analytics (funnel and revenue) and trigger your webhooks.</p>
+    <div class="card st-card">
+      <div class="row">
+        <button class="st-btn st-btn--secondary st-btn--lg" id="btnSignup" type="button">Track “signup”</button>
+        <button class="st-btn st-btn--secondary st-btn--lg" id="btnPurchase" type="button">Track “purchase”: Trail Runner, size 9 · $49.99</button>
+      </div>
+      <div id="eventRes" aria-live="polite"><p class="empty">No events sent yet.</p></div>
+    </div>
+  </section>
+
   </div>
+  <aside class="step record" aria-labelledby="h-log">
+    <h2 class="step-h record-h" id="h-log"><svg class="h-mm h-mm--r" viewBox="4 1 40 46" aria-hidden="true" focusable="false"><path class="h-mm-l" d="M22 3A16 16 0 0 0 22 35Z"/><path class="h-mm-r" d="M26 45A16 16 0 0 0 26 13Z"/></svg>Activity</h2>
+    <p class="step-p">Every request this page sends, newest first. Nothing leaves this browser except these calls to your endpoint.</p>
+    <div class="card st-card">
+      <ol class="log" id="log"><li class="empty">Requests appear here.</li></ol>
+    </div>
+  </aside>
+  </div>
+</main>
 
-  <h2 class="step"><span class="st-overline">Activity</span></h2>
-  <div class="card st-card"><div class="log" id="log"><span class="muted">requests will appear here…</span></div></div>
+<div class="seam" aria-hidden="true"><i class="seam-dot"></i></div>
+<footer class="foot">
+  <p><b>Deep links by Strait</b> · Straight to the screen. On the record.</p>
+  <p>Talk to the Strait team: <a href="mailto:support@straitlink.in">support@straitlink.in</a> · <a href="tel:+918121861890">+91 81218 61890</a></p>
+</footer>
 
-  <footer>Deep links by Strait · Straight to the screen. On the record.</footer>
-</div>
-
+<script src="assets/theme.js"></script>
 <script>
 const $ = (id) => document.getElementById(id);
-const cfg = () => ({ endpoint: $('endpoint').value.replace(/\/+$/,''), publishableKey: $('publishableKey').value.trim() });
+const cfg = () => ({ endpoint: $('endpoint').value.replace(/\/+$/, ''), publishableKey: $('publishableKey').value.trim() });
 
 // Served from this machine → default to the local engine (npm run dev, port 3000)
 // rather than the hosted one, so local testing never silently hits old code.
 if (['localhost', '127.0.0.1'].includes(location.hostname)) $('endpoint').value = 'http://localhost:3000';
 
-// persist config (an endpoint/key you typed wins over the default above)
-for (const k of ['endpoint','publishableKey']) {
-  const v = localStorage.getItem('strait_'+k); if (v) $(k).value = v;
-  $(k).addEventListener('input', () => localStorage.setItem('strait_'+k, $(k).value));
+// Persist config (an endpoint / key you typed wins over the default above).
+for (const k of ['endpoint', 'publishableKey']) {
+  try { const v = localStorage.getItem('strait_' + k); if (v) $(k).value = v; } catch {}
+  $(k).addEventListener('input', () => { try { localStorage.setItem('strait_' + k, $(k).value); } catch {} progress(); });
 }
 
-function logLine(msg, ok) {
-  const el = $('log');
-  if (el.querySelector('.muted')) el.innerHTML = '';
-  const d = document.createElement('div');
-  d.className = 'line';
-  d.innerHTML = '<span class="'+(ok?'ok':'err')+'">'+(ok?'✓':'✗')+'</span> '+new Date().toLocaleTimeString()+' — '+msg;
-  el.prepend(d);
+// ── Small DOM helpers: everything from the network is set as text, never as HTML ──
+function h(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+  for (const c of kids) n.append(c instanceof Node ? c : document.createTextNode(String(c)));
+  return n;
 }
+const MARK = '<svg class="h-mm h-mm--r h-rcpt-m" viewBox="4 1 40 46" aria-hidden="true" focusable="false"><path class="h-mm-l" d="M22 3A16 16 0 0 0 22 35Z"/><path class="h-mm-r" d="M26 45A16 16 0 0 0 26 13Z"/></svg>';
+/** A health chip: glyph + word (OK / Broken), with the HTTP status as its label. */
+function chip(ok, label) {
+  return h('span', { class: 'chip', 'data-set': 'health', 'data-value': ok ? 'ok' : 'broken' }, `${label}: ${ok ? 'OK' : 'Broken'}`);
+}
+function line(k, v, block = false) {
+  return h('li', block ? { class: 'is-block' } : {}, h('span', { class: 'h-rk' }, k), h('span', { class: 'sr' }, ': '), h('i', { 'aria-hidden': 'true' }), h('span', { class: 'h-rv' }, v));
+}
+let receipts = 0;
+/** The record of one request: a receipt on warm paper, with the raw reply under it. */
+function receipt(head, lines, note, raw) {
+  const id = 'rc-' + (++receipts);
+  const top = h('p', { class: 'h-rcpt-h', id }, h('span', {}, head));
+  top.insertAdjacentHTML('beforeend', MARK);
+  const art = h('article', { class: 'h-rcpt', 'aria-labelledby': id }, top, h('ul', { class: 'h-rcpt-l' }, ...lines));
+  if (note) art.append(h('p', { class: 'h-rcpt-b' }, note));
+  const frag = document.createDocumentFragment();
+  frag.append(art);
+  if (raw !== undefined) frag.append(h('details', { class: 'raw' }, h('summary', {}, 'Raw reply'), h('pre', {}, typeof raw === 'string' ? raw : JSON.stringify(raw, null, 2))));
+  return frag;
+}
+const clock = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+function logLine(msg, ok, status) {
+  const el = $('log');
+  if (el.querySelector('.empty')) el.textContent = '';
+  el.prepend(h('li', {}, h('time', {}, clock()), chip(ok, status), h('span', { class: 'msg' }, msg)));
+}
+
+// ── The 1/2/3 rail follows what has been done ──
+const done = { match: false, event: false };
+function progress() {
+  const steps = [!!cfg().publishableKey, done.match, done.event];
+  const current = steps.indexOf(false); // -1 = all done
+  document.querySelectorAll('#rail .rail-s').forEach((li, i) => {
+    li.classList.toggle('is-done', steps[i] && i !== current);
+    li.classList.toggle('is-on', i === current);
+    if (i === current) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+    const sec = $('step' + (i + 1));
+    sec.classList.toggle('is-on', i === current);
+    sec.classList.toggle('is-done', steps[i] && i !== current);
+  });
+}
+progress();
 
 function device() {
   return {
@@ -127,34 +186,56 @@ async function post(path, body) {
   return { status: res.status, ok: res.ok, body: parsed };
 }
 
+function needKey(target) {
+  target.replaceChildren(h('p', { class: 'st-error', role: 'alert' }, 'Enter your publishable key first (step 1).'));
+  $('publishableKey').setAttribute('aria-invalid', 'true');
+  $('publishableKey').focus();
+}
+$('publishableKey').addEventListener('input', () => $('publishableKey').removeAttribute('aria-invalid'));
+
 $('btnMatch').onclick = async () => {
   const { publishableKey } = cfg();
-  if (!publishableKey) { $('matchRes').innerHTML = '<span class="err">Enter your publishable key first.</span>'; return; }
-  $('btnMatch').disabled = true; $('matchRes').textContent = '…';
+  if (!publishableKey) return needKey($('matchRes'));
+  $('btnMatch').disabled = true;
+  $('matchRes').replaceChildren(h('p', { class: 'empty' }, 'Asking Strait…'));
   try {
     const r = await post('/v1/match', { publishableKey, ...device() });
-    $('matchRes').textContent = JSON.stringify(r.body, null, 2);
-    logLine('POST /v1/match → '+r.status+(r.body?.matched?' (MATCHED → '+r.body.longUrl+')':' (no match yet)'), r.ok);
+    const b = r.body || {};
+    const lines = [line('Reply', chip(r.ok, r.status)), line('Matched', b.matched ? 'Yes' : 'No')];
+    if (b.matchMethod) lines.push(line('Method', b.matchMethod));
+    if (b.longUrl) lines.push(line('Goes to', b.longUrl, true));
+    if (b.clickId) lines.push(line('Tap id', b.clickId));
+    if (!r.ok && b.reason) lines.push(line('Reason', b.reason));
+    lines.push(line('Time', clock()));
+    const note = r.ok
+      ? (b.matched ? 'Your app would open this screen now. Pass the tap id with conversion events.' : 'No recent tap from this device. Tap one of your links on this device, then check again.')
+      : 'Check the endpoint and the publishable key.';
+    $('matchRes').replaceChildren(receipt('POST /v1/match', lines, note, r.body ?? '(no JSON body)'));
+    logLine('POST /v1/match' + (b.matched ? ` matched → ${b.longUrl}` : ' no match yet'), r.ok, r.status);
+    if (r.ok) { done.match = true; progress(); }
   } catch (e) {
-    $('matchRes').innerHTML = '<span class="err">'+e.message+' — is the endpoint reachable & the publishable key correct?</span>';
-    logLine('POST /v1/match failed: '+e.message, false);
+    $('matchRes').replaceChildren(receipt('POST /v1/match', [line('Reply', chip(false, 'Network')), line('Time', clock())], `${e.message}. Is the endpoint reachable?`));
+    logLine('POST /v1/match failed: ' + e.message, false, 'Network');
   }
   $('btnMatch').disabled = false;
 };
 
 async function sendEvent(name, extra) {
   const { publishableKey } = cfg();
-  if (!publishableKey) { $('eventRes').innerHTML = '<span class="err">Enter your publishable key first.</span>'; return; }
-  $('eventRes').textContent = '…';
+  if (!publishableKey) return needKey($('eventRes'));
+  $('eventRes').replaceChildren(h('p', { class: 'empty' }, 'Sending…'));
   try {
     const r = await post('/v1/event', { publishableKey, event: name, ...extra });
-    $('eventRes').innerHTML = r.ok
-      ? '<span class="ok">✓ '+name+' tracked ('+r.status+'). Check Dashboard → Analytics.</span>'
-      : '<span class="err">'+r.status+': '+JSON.stringify(r.body)+'</span>';
-    logLine('POST /v1/event "'+name+'" → '+r.status, r.ok);
+    const lines = [line('Event', name)];
+    if (extra.value) lines.push(line('Value', `$${extra.value.toFixed(2)} ${extra.currency}`));
+    lines.push(line('Reply', chip(r.ok, r.status)), line('Time', clock()));
+    const note = r.ok ? 'Recorded. See Dashboard → Analytics.' : 'The engine refused the event: see the raw reply.';
+    $('eventRes').replaceChildren(receipt('POST /v1/event', lines, note, r.body ?? '(no JSON body)'));
+    logLine(`POST /v1/event "${name}"`, r.ok, r.status);
+    if (r.ok) { done.event = true; progress(); }
   } catch (e) {
-    $('eventRes').innerHTML = '<span class="err">'+e.message+'</span>';
-    logLine('POST /v1/event failed: '+e.message, false);
+    $('eventRes').replaceChildren(receipt('POST /v1/event', [line('Event', name), line('Reply', chip(false, 'Network')), line('Time', clock())], `${e.message}. Is the endpoint reachable?`));
+    logLine('POST /v1/event failed: ' + e.message, false, 'Network');
   }
 }
 $('btnSignup').onclick = () => sendEvent('signup', {});

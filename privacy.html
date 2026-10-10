@@ -4,16 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Strait Link · Privacy Policy</title>
+<meta name="color-scheme" content="dark light">
+<script>try{var t=localStorage.getItem('strait.theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="preload" href="assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="strait-tokens.css">
-<link rel="stylesheet" href="strait-warm.css">
 <link rel="stylesheet" href="strait-ui.css">
+<link rel="stylesheet" href="strait-parts.css">
+<link rel="stylesheet" href="assets/demo.css">
 <style>
   body { margin: 0; background: var(--st-bg); }
-  main { max-width: 46rem; margin: 0 auto; padding: var(--st-space-8) var(--st-space-5) var(--st-space-16); font: var(--st-text-body-lg); }
+  main { width: 100%; max-width: 46rem; margin: 0 auto; padding: var(--st-space-8) var(--st-space-5) var(--st-space-16); font: var(--st-text-body-lg); }
   .logo img { display: block; height: 28px; width: auto; margin-bottom: var(--st-space-8); }
   h1 { margin: 0 0 var(--st-space-2); }
   h2 { margin: var(--st-space-8) 0 var(--st-space-2); }
@@ -26,10 +28,7 @@
 </head>
 <body class="st-root">
 <main>
-  <picture class="logo">
-    <source srcset="assets/strait-lockup-dark.svg" media="(prefers-color-scheme: dark)">
-    <img src="assets/strait-lockup.svg" alt="Strait" width="85" height="28">
-  </picture>
+  <span class="logo"><img class="lk-l" src="assets/strait-lockup.svg" alt="Strait" width="85" height="28"><img class="lk-d" src="assets/strait-lockup-dark.svg" alt="Strait" width="85" height="28"></span>
   <h1 class="st-h1">Privacy Policy: Strait Link</h1>
   <p class="muted">App: Strait Link (Android package <code>com.straitlink.app</code>) · Last updated: 3 October 2026</p>
 
@@ -88,5 +87,10 @@
   <h2 class="st-h3">Changes</h2>
   <p>If this policy changes, the updated version will be posted on this page with a new date.</p>
 </main>
+<div class="seam" aria-hidden="true"><i class="seam-dot"></i></div>
+<footer class="foot">
+  <p><b>Deep links by Strait</b> · Straight to the screen. On the record.</p>
+  <p>Privacy questions: <a href="mailto:privacy@straitlink.in">privacy@straitlink.in</a></p>
+</footer>
 </body>
 </html>
