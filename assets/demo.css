@@ -66,8 +66,12 @@ code { font: var(--st-text-code); font-variant-ligatures: none; font-feature-set
 .h-rcpt-l li.is-block > i { display: none; }
 .h-rcpt-l li.is-block .h-rv { text-align: left; justify-content: flex-start; }
 /* Paper keeps its own ink in both themes (DS v5 §8.5), so a health chip printed on it uses the
-   light-theme status pair from strait-tokens.css (status-ok / status-broken, :root values). */
-.h-rcpt { --st-status-ok: #33701B; --st-status-ok-bg: #EEF4E4; --st-status-broken: #B3261E; --st-status-broken-bg: #FBEAE6; }
+   paper status pair from strait-tokens.css (paper-status-*, contrast-checked on paper and dimmed paper). */
+.h-rcpt {
+  --st-status-ok: var(--st-paper-status-ok); --st-status-ok-bg: var(--st-paper-status-ok-bg);
+  --st-status-degraded: var(--st-paper-status-degraded); --st-status-degraded-bg: var(--st-paper-status-degraded-bg);
+  --st-status-broken: var(--st-paper-status-broken); --st-status-broken-bg: var(--st-paper-status-broken-bg);
+}
 .raw { margin-top: var(--st-space-1); }
 .raw summary { cursor: pointer; font: var(--st-text-caption); color: var(--st-text-muted); padding: var(--st-space-2) 0; min-height: 44px; display: flex; align-items: center; }
 .raw summary:focus-visible { outline: 2px solid var(--st-focus-ring); outline-offset: 2px; border-radius: var(--st-radius-xs); }
