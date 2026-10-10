@@ -4,4 +4,4 @@ A pretend customer web app ("Hilltop Shoes", a made-up shop used in examples) fo
 
 ## Support
 
-Questions or a bug: support@straitlink.in (replies within 1 working day, IST) or open a GitHub issue. Security: security@straitlink.in.
+Questions or a bug? Talk to the Strait team: support@straitlink.in (replies within 1 working day) or open a GitHub issue. Security: security@straitlink.in.

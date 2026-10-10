@@ -7,8 +7,9 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="strait-tokens.css">
+<link rel="stylesheet" href="strait-warm.css">
 <link rel="stylesheet" href="strait-ui.css">
 <style>
   *{box-sizing:border-box;margin:0;padding:0;-webkit-text-size-adjust:100%}
@@ -73,7 +74,7 @@
     <p class="hint">Fire the events your real app would send. They show up in Dashboard → Analytics (funnel + revenue) and trigger webhooks.</p>
     <div class="row">
       <button class="st-btn st-btn--secondary st-btn--lg" id="btnSignup">Track “signup”</button>
-      <button class="st-btn st-btn--secondary st-btn--lg" id="btnPurchase">Track “purchase” $49.99</button>
+      <button class="st-btn st-btn--secondary st-btn--lg" id="btnPurchase">Track “purchase”: Trail Runner, size 9 · $49.99</button>
     </div>
     <div class="res" id="eventRes">—</div>
   </div>
@@ -81,7 +82,7 @@
   <h2 class="step"><span class="st-overline">Activity</span></h2>
   <div class="card st-card"><div class="log" id="log"><span class="muted">requests will appear here…</span></div></div>
 
-  <footer>Deep links and analytics by Strait</footer>
+  <footer>Deep links by Strait · Straight to the screen. On the record.</footer>
 </div>
 
 <script>
