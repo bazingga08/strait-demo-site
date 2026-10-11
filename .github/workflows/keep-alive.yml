@@ -1,17 +1,12 @@
-# Keeps Strait's free-tier infrastructure from going to sleep:
-# - Render's free web service sleeps after ~15 min idle (first visitor then
-#   waits 30-60 s on a "waking up" page), and
-# - Supabase's free project pauses after ~7 days without database activity.
-# /healthz/deep wakes the engine AND runs a database query. If the database is
-# down the job fails, and GitHub emails the repo owner: a free outage alert.
-# Lives in this public repo because Actions minutes are free for public repos.
-# Note: GitHub disables schedules in repos with no commits for 60 days; then
-# re-enable it under Actions, or move to a paid Render plan / an uptime monitor.
+# Manual deep health check of Strait (engine + database): Actions > keep-strait-awake > Run.
+# The */10 schedule is retired (11 Oct 2026): GitHub ran it only every 3.5-7 hours, so it
+# neither kept Render/Supabase awake nor alerted in time. Keep-warm and outage alerts now
+# come from the strait-edge Worker cron (every 5 min, /healthz/deep, Telegram on 2 fails):
+# strait-redirect-engine edge/README.md "Outage alerts" and "Keep-warm".
+# To bring the schedule back: add `schedule: [{cron: '*/10 * * * *'}]` under `on:`.
 name: keep-strait-awake
 
 on:
-  schedule:
-    - cron: '*/10 * * * *'
   workflow_dispatch:
 
 jobs:
