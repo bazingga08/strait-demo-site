@@ -130,6 +130,6 @@
 /* ── Feedback ─────────────────────────────────────────────────────────── */
 .st-toast { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: var(--st-radius-md); background: var(--st-text); color: var(--st-text-inverse); box-shadow: var(--st-shadow-lg); font: var(--st-text-body); }
 .st-empty { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: var(--st-space-10) var(--st-space-6); border: 1px dashed var(--st-border-strong); border-radius: var(--st-radius-lg); color: var(--st-text-muted); }
-.st-skeleton { background: linear-gradient(90deg, var(--st-bg-muted), var(--st-bg-subtle), var(--st-bg-muted)); background-size: 200% 100%; border-radius: var(--st-radius-sm); animation: st-shimmer 1.4s linear infinite; }
+.st-skeleton { background: var(--st-gradient-skeleton); background-size: 200% 100%; border-radius: var(--st-radius-sm); animation: st-shimmer 1.4s linear infinite; }
 @keyframes st-shimmer { to { background-position: -200% 0; } }
 @media (prefers-reduced-motion: reduce) { .st-skeleton { animation: none; } }
